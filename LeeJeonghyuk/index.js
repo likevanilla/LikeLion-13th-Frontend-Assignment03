@@ -52,7 +52,7 @@ function register() {
 
   // 이름
   if (!nameValid(nameInput.value)) {
-    setError(nameInput, nameError, '이름을 입력하세요.');
+    setError(nameInput, nameError, nameError.textContent);
     isFormValid = false;
   } else {
     setSuccess(nameInput, nameError);
@@ -60,7 +60,7 @@ function register() {
 
   // 이메일
   if (!emailValid(emailInput.value)) {
-    setError(emailInput, emailError, '유효한 이메일을 입력하세요.');
+    setError(emailInput, emailError, emailError.textContent);
     isFormValid = false;
   } else {
     setSuccess(emailInput, emailError);
@@ -68,7 +68,7 @@ function register() {
 
   // 비밀번호
   if (!passwordValid(passwordInput.value)) {
-    setError(passwordInput, passwordError, '비밀번호는 최소 6자입니다.');
+    setError(passwordInput, passwordError, passwordError.textContent);
     isFormValid = false;
   } else {
     setSuccess(passwordInput, passwordError);
@@ -76,7 +76,7 @@ function register() {
 
   // 비밀번호 확인
   if (!passwordsMatch(passwordInput.value, checkPasswordInput.value)) {
-    setError(checkPasswordInput, checkPasswordError, '비밀번호가 일치하지 않습니다.');
+    setError(checkPasswordInput, checkPasswordError, checkPasswordError.textContent);
     isFormValid = false;
   } else {
     setSuccess(checkPasswordInput, checkPasswordError);
@@ -104,3 +104,26 @@ registrationButton.addEventListener('click', register);
 passwordButton.addEventListener('click', () => showPasswordButton(passwordInput, passwordButton));
 checkPasswordButton.addEventListener('click', () => showPasswordButton(checkPasswordInput, checkPasswordButton));
 resetButton.addEventListener('click', resetForm);
+
+// 초기화
+function resetForm() {
+  // 인풋 항목들 불러와서 값 공백, 비밀번호와 비밀번호 확인이라면 type을 password로 변경 (보기 버튼을 클릭했을 때를 생각)
+  document.querySelectorAll('input[type="text"], input[type="email"], input[type="password"]').forEach(i => {
+      i.value = '';
+      i.type = (i === passwordInput || i === checkPasswordInput) ? 'password' : i.type;
+  });
+
+  // 인풋 박스 error, success 클래스 제거
+  document.querySelectorAll('.inputBox').forEach(box => {
+    box.classList.remove('error', 'success');
+  });
+
+  // 오류 문구들을 안 보이게 설정
+  document.querySelectorAll('#nameError, #emailError, #passwordError, #checkPasswordError').forEach(e => {
+       e.style.display = 'none';
+  });
+
+  // 보기 버튼 텍스트 초기화
+  passwordButton.value = '보기';
+  checkPasswordButton.value = '보기';
+}

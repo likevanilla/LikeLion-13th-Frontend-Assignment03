@@ -1,4 +1,4 @@
-@media all and (min-width: 768px) {
+
     body {
         background-color: rgb(236, 236, 236);
         margin: 0;
@@ -7,7 +7,7 @@
 
     #form {
         background-color: white;
-        margin: 10% 30%;
+        margin: 0 auto;
         box-shadow: 1px 1px 3px gray;
         border-radius: 8px;
         padding: 20px;
@@ -32,6 +32,8 @@
         border: none;
         padding: 10px;
         font-size: 1rem;
+        border-radius: 4px;
+        width: 100%;
     }
     
     #nameError, #emailError, #passwordError, #checkPasswordError {
@@ -81,68 +83,25 @@
     #resetButton {
         padding: 8px 0;
         font-weight: bold;
-        border: none;
         color: white;
         background-color: rgb(234, 73, 73);
-        border: 4px;
+        border:none;
         cursor: pointer;
         border-radius: 4px;
         font-size: 1rem;
+    }
+
+
+@media screen and (min-width: 768px) {
+    #form {
+        width: 500px;
+        margin-top: 10%;
     }
 }
 
-@media all and (max-width: 767px) {
+@media screen and (max-width: 767px) {
     #form {
-        margin: 5%;
-        padding: 15px;
-    }
-
-    .inputBox {
-        flex-direction: column;
-        border: 1px solid black;
-        border-radius: 4px;
-        overflow: hidden;
-        margin: 10px 0;
-    }
-
-    input[type="text"], input[type="email"], input[type="password"] {
-        flex-grow: 1;
-        border: none;
-        padding: 10px;
-        font-size: 1rem;
-        border-radius: inherit;
-        outline: none;
-    }
-
-    #passwordButton, #checkPasswordButton {
-        align-self: flex-end;
-        background-color: white;
-        border: none;
-        color: blue;
-        font-weight: bold;
-        cursor: pointer;
-        padding: 8px 12px;
-    }
-
-    #buttonBox {
-        flex-direction: column;
-        gap: 10px;
-    }
-
-    #registrationButton, #resetButton {
-        padding: 10px;
-        font-weight: bold;
-        border-radius: 4px;
-        font-size: 1rem;
-        color: white;
-        border: none;
-    }
-
-    #registrationButton {
-        background-color: rgb(103, 103, 226);
-    }
-
-    #resetButton {
-        background-color: rgb(234, 73, 73);
+        width: 95%;
+        margin: 0 auto;
     }
 }
